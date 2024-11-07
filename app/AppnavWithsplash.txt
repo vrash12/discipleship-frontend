@@ -1,0 +1,51 @@
+//app/AppNavigator.js
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import LoginScreen from './LoginScreen';
+import SignupScreen from './SignupScreen';
+import AdminDashboard from './component/admin/AdminDashboard';
+import UserDashboard from './component/user/UserDashboard';
+import Bible from './component/bible/Bible';
+import LessonForm from './component/devo/LessonForm';
+import LessonManager from './component/devo/LessonManager';
+import Settings from './component/user_setting/Settings';
+import NotesScreen from './component/user/notes/NotesScreen';  
+import NotesProvider from './component/user/notes/NotesContext'; 
+import { useFonts, Merriweather_400Regular, Merriweather_700Bold } from '@expo-google-fonts/merriweather';
+import NoteDetail from './component/user/notes/NoteDetail';
+import AddNote from './component/user/notes/AddNote';
+import DiscipleshipJourneyScreen from './component/user/discipleship/DiscipleshipJourneyScreen';
+import FaithTestScreen from './component/user/discipleship/FaithTestScreem';
+const Stack = createStackNavigator();
+import DiscipleshipDashboard from './component/user/discipleship/DiscipleshipDashboard';
+
+function AppNavigator() {
+  return (
+    // Wrap the entire NavigationContainer with NotesProvider
+    <NotesProvider>
+      <NavigationContainer independent={true}>
+        <Stack.Navigator initialRouteName="SplashScreen">
+          <Stack.Screen name="SplashScreen" component={SplashScreen} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }}  />
+          <Stack.Screen name="SignupScreen" component={SignupScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="AdminDashboard" component={AdminDashboard}options={{ headerShown: false }}  />
+          <Stack.Screen name="UserDashboard" component={UserDashboard}options={{ headerShown: false }}  />
+          <Stack.Screen name="Bible" component={Bible} options={{ headerShown: false }}  />
+          <Stack.Screen name="LessonForm" component={LessonForm} />
+          <Stack.Screen name="LessonManager" component={LessonManager} />
+          <Stack.Screen name="Settings" component={Settings} />
+          <Stack.Screen name="NotesScreen" component={NotesScreen} />
+          <Stack.Screen name="NoteDetail" component={NoteDetail} />
+          <Stack.Screen name="AddNote" component={AddNote} />
+          <Stack.Screen name="DiscipleshipJourneyScreen" component={DiscipleshipJourneyScreen} />
+          <Stack.Screen name="FaithTestScreen" component={FaithTestScreen} />
+          <Stack.Screen name="DiscipleshipDashboard" component={DiscipleshipDashboard} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </NotesProvider>
+  );
+}
+
+export default AppNavigator;
